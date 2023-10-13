@@ -1,4 +1,4 @@
-package br.inatel.cdg.schema_organizer;
+package br.unifei.imc.schema_organizer;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +26,9 @@ public class CreateSchemasFinalList {
 		
 		Map<String, Integer> schemaMap = new HashMap<String, Integer>();
 		
-		//String path = "/Users/phillima/Documents/Doutorado/PaperLegibilidadeAnnotations/results.csv";
-		
 		String path = args[0];
 		System.out.println(path);
 		int threshold = 0;
-		//String path2 = "/Users/phillima/Documents/Doutorado/PaperLegibilidadeAnnotations/resultsTH_" + threshold + ".csv";
-		
 		String path2 = args[0] + "/resultsFinal.csv";
 		
 		//Read the CSV
@@ -63,7 +58,7 @@ public class CreateSchemasFinalList {
 						return v;
 					});
 				}
-				
+
 //				if(schemaAnt.equals(schema)) {
 //					cont++;
 //				}else {
@@ -78,13 +73,13 @@ public class CreateSchemasFinalList {
 //					schemaAnt = schema;
 //				}
 //				ClassPojo schemaCounter = new ClassPojo
-//						(record[0], 
-//					     record[1], 
-//					     schema, 
+//						(record[0],
+//					     record[1],
+//					     schema,
 //						 new Integer(record[3]),
 //						 new Integer(record[4]));
 //				temp.add(schemaCounter);
-				
+
 			}
 			reader.close();
 		} catch (IOException e) {

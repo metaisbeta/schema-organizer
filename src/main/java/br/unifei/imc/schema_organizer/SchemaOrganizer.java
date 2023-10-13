@@ -1,8 +1,7 @@
-package br.inatel.cdg.schema_organizer;
+package br.unifei.imc.schema_organizer;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,12 +14,12 @@ import java.util.Set;
 
 import com.opencsv.CSVWriter;
 
-import br.inpe.cap.asniffer.ASniffer;
-import br.inpe.cap.asniffer.ASniffer2;
-import br.inpe.cap.asniffer.model.AMReport;
-import br.inpe.cap.asniffer.model.ClassModel;
-import br.inpe.cap.asniffer.model.PackageModel;
-import br.inpe.cap.asniffer.output.json.JSONReport;
+import com.github.phillima.asniffer.ASniffer;
+import com.github.phillima.asniffer.model.AMReport;
+import com.github.phillima.asniffer.model.ClassModel;
+import com.github.phillima.asniffer.model.PackageModel;
+import com.github.phillima.asniffer.output.json.JSONReport;
+
 
 public class SchemaOrganizer {
 	
@@ -35,27 +34,13 @@ public class SchemaOrganizer {
 		Set<String> schemas = new HashSet<String>();
 		
 		File[] directories = new File(path).listFiles(File::isDirectory);
-//		
-//		for (File dir : directories) {
-//			System.out.println("Collecting schemas for projet: " + dir.getAbsolutePath());
-//			ASniffer2 runner = new ASniffer2();
-//			schemas.addAll(runner.getSchemas(dir));
-//			for (String schema : schemas) {
-//				System.out.println(schema);
-//			}
-//		}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-		
+
+
 		for (File dir : directories) {
 			System.out.println("Collecting for projet: " + dir.getAbsolutePath());
 			ASniffer runner = new ASniffer(dir.getAbsolutePath(), path, new JSONReport());
 			AMReport report = runner.collectSingle();
 			extractSchema(report);
-			//generateCSV(path, classesPojo);
-			//classesPojo = new ArrayList<ClassPojo>();
 		}
 	
 		generateClassPojo(null, schemasUACCOunter);

@@ -1,4 +1,4 @@
-package br.inatel.cdg.schema_organizer;
+package br.unifei.imc.schema_organizer;
 
 import java.io.IOException;
 import java.io.Reader;
